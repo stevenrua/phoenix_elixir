@@ -37,6 +37,8 @@ defmodule MatricularCurso.Estudiantes do
   """
   def get_estudiante!(id), do: Repo.get!(Estudiante, id) |> Repo.preload(:cursos) |> Repo.preload(:colegio)
 
+  def get_estudiante_by_name!(nombres), do: Repo.get_by!(Estudiante, nombres: nombres) |> Repo.preload(:cursos) |> Repo.preload(:colegio)
+
   @doc """
   Creates a estudiante.
 
@@ -72,6 +74,8 @@ defmodule MatricularCurso.Estudiantes do
     |> Estudiante.changeset(attrs)
     |> Repo.update()
   end
+
+
 
   @doc """
   Deletes a estudiante.

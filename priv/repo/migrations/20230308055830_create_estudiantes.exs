@@ -13,8 +13,8 @@ defmodule MatricularCurso.Repo.Migrations.CreateEstudiantes do
       timestamps()
     end
 
-    #create unique_index(:estudiantes, [:num_identi])
-    create index(:estudiantes, [:colegio_id, :num_identi])
+    create unique_index(:estudiantes, [:num_identi])
+    #create index(:estudiantes, [:num_identi])
 
   end
 end

@@ -12,6 +12,8 @@ defmodule MatricularCursoWeb.Router do
     pipe_through :api
     resources "/estudiantes", EstudianteController, except: [:edit, :new, :update]
     put "/estudiantes/:id", EstudianteController, :update
+    put "/estudiantes/calcularprom/:id", EstudianteController, :calcular
+    get "/estudiantes/findbyname/:name", EstudianteController, :findbyname
 
     resources "/cursos", CursoController, except: [:edit, :new, :update]
     put "/cursos/:id", CursoController, :update

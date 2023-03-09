@@ -12,6 +12,7 @@ defmodule MatricularCurso.Repo.Migrations.CreateColegios do
     end
 
     #mejor trabajar con unique
-    create index(:colegios, [ :nombre_colegio])
+    #create index(:colegios, [ :nombre_colegio])
+    create unique_index(:colegios, [:nombre_colegio])
   end
 end

@@ -18,5 +18,7 @@ defmodule MatricularCurso.Colegios.Colegio do
     colegio
     |> cast(attrs, [:nombre_colegio, :ciudad, :numero_estudiantes, :tipo])
     |> validate_required([:nombre_colegio, :ciudad, :numero_estudiantes, :tipo])
+    |> validate_length(:nombre_colegio, min: 10, message: "el nombre del colegio debe tener minimo 10 caracteres")
+    |> unique_constraint(:nombre_colegio, message: "el colegio ya esta registrado en la BD")
   end
 end

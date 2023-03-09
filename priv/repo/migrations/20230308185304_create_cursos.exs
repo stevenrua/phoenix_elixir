@@ -12,6 +12,7 @@ defmodule MatricularCurso.Repo.Migrations.CreateCursos do
       timestamps()
     end
 
-    create index(:cursos, [:estudiante_id, :nombre_curso])
+    #create index(:cursos, [:nombre_curso])
+    create unique_index(:cursos, [:nombre_curso])
   end
 end

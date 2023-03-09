@@ -17,8 +17,8 @@ defmodule MatricularCurso.Cursos.Curso do
   def changeset(curso, attrs) do
     curso
     |> cast(attrs, [:nombre_curso, :descripcion, :numero_estudiantes, :nota, :estudiante_id])
-    |> validate_required([:nombre_curso, :descripcion, :numero_estudiantes, :estudiante_id])
-    |> validate_length(:nombre_curso, min: 10, message: "el nombre del curso debe minimo 10 caracteres")
+    |> validate_required([:nombre_curso, :descripcion, :numero_estudiantes, :nota, :estudiante_id])
+    |> validate_length(:nombre_curso, min: 10, message: "el nombre del curso debe tener minimo 10 caracteres")
     |> unique_constraint(:nombre_curso, message: "el curso ya existe en la BD")
   end
 end
