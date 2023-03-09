@@ -7,8 +7,8 @@ defmodule MatricularCurso.Repo.Migrations.CreateCursos do
       add :nombre_curso, :string
       add :descripcion, :string
       add :numero_estudiantes, :integer
+      add :nota, :float
       add :estudiante_id, references(:estudiantes, on_delete: :delete_all, type: :binary_id)
-
       timestamps()
     end
 

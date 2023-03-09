@@ -18,7 +18,7 @@ defmodule MatricularCurso.Estudiantes do
 
   """
   def list_estudiantes do
-    Repo.all(Estudiante) |> Repo.preload(:cursos)
+    Repo.all(Estudiante) |> Repo.preload(:cursos) |> Repo.preload(:colegio)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule MatricularCurso.Estudiantes do
       ** (Ecto.NoResultsError)
 
   """
-  def get_estudiante!(id), do: Repo.get!(Estudiante, id) |> Repo.preload(:cursos)
+  def get_estudiante!(id), do: Repo.get!(Estudiante, id) |> Repo.preload(:cursos) |> Repo.preload(:colegio)
 
   @doc """
   Creates a estudiante.

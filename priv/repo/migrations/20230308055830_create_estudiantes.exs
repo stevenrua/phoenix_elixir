@@ -8,11 +8,13 @@ defmodule MatricularCurso.Repo.Migrations.CreateEstudiantes do
       add :nombres, :string
       add :apellidos, :string
       add :edad, :integer
-
+      add :promedio, :float
+      add :colegio_id, references(:colegios, on_delete: :delete_all, type: :binary_id)
       timestamps()
     end
 
-    create unique_index(:estudiantes, [:num_identi])
+    #create unique_index(:estudiantes, [:num_identi])
+    create index(:estudiantes, [:colegio_id, :num_identi])
 
   end
 end

@@ -20,8 +20,17 @@ defmodule MatricularCursoWeb.EstudianteJSON do
       false -> []
       true -> estudiante.cursos
       |> Enum.map(& Map.from_struct(&1))
-      |> Enum.map(& Enum.reduce([:__meta__, :estudiante, :estudiante_id, :inserted_at,
+      |> Enum.map(& Enum.reduce([:__meta__, :estudiante, :colegio, :inserted_at,
       :updated_at], &1, fn key, acc -> Map.delete(acc, key) end))
+    end
+
+    colegio = case is_map(estudiante.colegio) do
+      false -> %{}
+      true -> [estudiante.colegio]
+      |> Enum.map(& Map.from_struct(&1))
+      |> Enum.map(& Enum.reduce([:__meta__, :cursos, :estudiantes, :estudiantes_id, :inserted_at,
+      :updated_at], &1, fn key, acc -> Map.delete(acc, key) end))
+      |> List.first()
     end
 
     # cursos = estudiante.cursos
@@ -33,7 +42,9 @@ defmodule MatricularCursoWeb.EstudianteJSON do
       nombres: estudiante.nombres,
       apellidos: estudiante.apellidos,
       edad: estudiante.edad,
-      cursos: cursos
+      promedio: estudiante.promedio,
+      cursos: cursos,
+      colegio: colegio
     }
   end
 end
