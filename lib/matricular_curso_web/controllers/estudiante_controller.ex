@@ -30,8 +30,6 @@ defmodule MatricularCursoWeb.EstudianteController do
     mapacurso= estudiante.cursos
     suma_notas = Enum.reduce(mapacurso, 0, fn(curso, suma) -> suma + curso.nota end)
     promedio = suma_notas/length(mapacurso)
-    # IO.puts("Promedio #{promedio}")
-    # estudiante = %Estudiante{estudiante | promedio: promedio}
 
     with {:ok, %Estudiante{} = estudiante} <- Estudiantes.update_estudiante(estudiante, %{promedio: promedio}) do
       render(conn, :show, estudiante: estudiante)
@@ -39,8 +37,8 @@ defmodule MatricularCursoWeb.EstudianteController do
   end
 
   def findbyname(conn, %{"name" => nombres}) do
-    estudiante = Estudiantes.get_estudiante_by_name!(nombres)
-    render(conn, :show, estudiante: estudiante)
+    estudiante = Estudiantes.buscar_por_nombre!(nombres)
+    render(conn, :index, estudiantes: estudiante)
   end
 
   def update(conn, %{"id" => id, "estudiante" => estudiante_params}) do

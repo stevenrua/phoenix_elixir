@@ -5,7 +5,7 @@ config :matricular_curso, MatricularCurso.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "matricula2",
+  database: "matriculasteven",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

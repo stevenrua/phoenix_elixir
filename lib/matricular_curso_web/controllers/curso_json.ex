@@ -16,9 +16,9 @@ defmodule MatricularCursoWeb.CursoJSON do
   end
 
   defp data(%Curso{} = curso) do
-    estudiante = case is_map(curso.estudiante) do
-      false -> %{}
-      true -> [curso.estudiante]
+    estudiante = case is_list(curso.estudiantes) do
+      false -> []
+      true -> curso.estudiantes
       |> Enum.map(& Map.from_struct(&1))
       |> Enum.map(& Enum.reduce([:__meta__, :cursos, :colegio_id, :colegio, :inserted_at,
       :updated_at], &1, fn key, acc -> Map.delete(acc, key) end))

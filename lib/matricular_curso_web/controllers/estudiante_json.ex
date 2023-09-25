@@ -20,7 +20,7 @@ defmodule MatricularCursoWeb.EstudianteJSON do
       false -> []
       true -> estudiante.cursos
       |> Enum.map(& Map.from_struct(&1))
-      |> Enum.map(& Enum.reduce([:__meta__, :estudiante, :colegio, :inserted_at,
+      |> Enum.map(& Enum.reduce([:__meta__, :estudiantes, :colegio, :inserted_at,
       :updated_at], &1, fn key, acc -> Map.delete(acc, key) end))
     end
 

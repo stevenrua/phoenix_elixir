@@ -1,4 +1,5 @@
 defmodule MatricularCursoWeb.Router do
+  alias MatricularCursoWeb.Estudiante_CursoController
   alias MatricularCursoWeb.ColegioController
   alias MatricularCursoWeb.CursoController
   alias MatricularCursoWeb.EstudianteController
@@ -20,5 +21,9 @@ defmodule MatricularCursoWeb.Router do
 
     resources "/colegios", ColegioController, except: [:edit, :new, :update]
     put "/colegios/:id", ColegioController, :update
+
+    resources "/estudiantescursos", Estudiante_CursoController, except: [:edit, :new, :update, :create]
+    post "/estudiantescursos", Estudiante_CursoController, :crear
+    put "/estudiantescursos/:id", Estudiante_CursoController, :update
   end
 end

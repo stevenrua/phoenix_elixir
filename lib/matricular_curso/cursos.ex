@@ -18,7 +18,7 @@ defmodule MatricularCurso.Cursos do
 
   """
   def list_cursos do
-    Repo.all(Curso) |> Repo.preload(:estudiante)
+    Repo.all(Curso) |> Repo.preload(:estudiantes)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule MatricularCurso.Cursos do
       ** (Ecto.NoResultsError)
 
   """
-  def get_curso!(id), do: Repo.get!(Curso, id) |> Repo.preload(:estudiante)
+  def get_curso!(id), do: Repo.get!(Curso, id) |> Repo.preload(:estudiantes)
 
   @doc """
   Creates a curso.

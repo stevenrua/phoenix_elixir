@@ -10,7 +10,7 @@ defmodule MatricularCurso.Estudiantes.Estudiante do
     field :nombres, :string
     field :num_identi, :string
     field :promedio, :float
-    has_many :cursos, MatricularCurso.Cursos.Curso
+    many_to_many :cursos, MatricularCurso.Cursos.Curso, join_through: "estudiantes_cursos"
     belongs_to :colegio, MatricularCurso.Colegios.Colegio
     timestamps()
   end
